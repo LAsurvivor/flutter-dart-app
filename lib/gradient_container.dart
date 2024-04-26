@@ -1,3 +1,4 @@
+import 'package:first_app/style_text.dart';
 import 'package:flutter/cupertino.dart';
 
 class GradientContainer extends StatelessWidget {
@@ -19,15 +20,7 @@ class GradientContainer extends StatelessWidget {
         ),
       ),
       child: const Center(
-        child: Text(
-          '谢谢',
-          style: TextStyle(
-            fontSize: 32,
-            fontWeight: FontWeight.bold,
-            color: Color.fromARGB(255, 255, 255, 255),
-            fontFamily: 'cursive',
-          ),
-        ),
+        child: StyleText(),
       ),
     );
   }
