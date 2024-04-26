@@ -17,9 +17,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const CupertinoApp(
       home: CupertinoPageScaffold(
-        child: GradientContainer(),
+        child: GradientContainer.purple(),
       ),
     );
   }
 }
-

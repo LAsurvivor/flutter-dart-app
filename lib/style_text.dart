@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
-class StyleText extends StatelessWidget {
-  const StyleText(
+class StyledText extends StatelessWidget {
+  const StyledText(
     this.text, {
     super.key,
   });
