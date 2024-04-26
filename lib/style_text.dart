@@ -1,21 +1,22 @@
 import 'package:flutter/cupertino.dart';
 
 class StyleText extends StatelessWidget {
-  const StyleText({
+  const StyleText(
+    this.text, {
     super.key,
   });
 
+  final String text;
+
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text(
-        '谢谢',
-        style: TextStyle(
-          fontSize: 32,
-          fontWeight: FontWeight.bold,
-          color: Color.fromARGB(255, 255, 255, 255),
-          fontFamily: 'cursive',
-        ),
+    return Text(
+      text,
+      style: const TextStyle(
+        fontSize: 32,
+        fontWeight: FontWeight.bold,
+        color: Color.fromARGB(255, 255, 255, 255),
+        fontFamily: 'cursive',
       ),
     );
   }
