@@ -33,19 +33,19 @@ class _DiceRollerState extends State<DiceRoller> {
           'assets/images/dice-$currentDiceRoll.png',
           width: 200,
         ),
-        const SizedBox(height: 20),
+        const SizedBox(height: 40),
         TextButton(
           onPressed: rollDice,
           style: TextButton.styleFrom(
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(24),
             ),
             padding: const EdgeInsets.symmetric(
               horizontal: 24,
-              vertical: 5,
+              vertical: 10,
             ),
-            foregroundColor: const Color.fromARGB(255, 147, 107, 107),
-            backgroundColor: const Color.fromARGB(255, 248, 194, 127),
+            foregroundColor: const Color.fromARGB(255, 255, 255, 255),
+            backgroundColor: const Color.fromARGB(255, 0, 0, 0),
             textStyle: const TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.bold,
