@@ -30,6 +30,7 @@ class _ExpensesState extends State<Expenses> {
 
   void _openAddExpenseOverlay() {
     showModalBottomSheet(
+      useSafeArea: true,
       isScrollControlled: true,
       context: context,
       builder: (ctx) => NewExpense(
@@ -52,22 +53,23 @@ class _ExpensesState extends State<Expenses> {
     ScaffoldMessenger.of(context).clearSnackBars();
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        duration: const Duration(seconds: 3),
-        content: const Text('Expense removed.'),
-        action: SnackBarAction(
-          label: 'Undo',
-          onPressed: () {
-            setState(() {
-              _registeredExpenses.insert(expenseIndex, expense);
-            });
-          },
-        )
-      ),
+          duration: const Duration(seconds: 3),
+          content: const Text('Expense removed.'),
+          action: SnackBarAction(
+            label: 'Undo',
+            onPressed: () {
+              setState(() {
+                _registeredExpenses.insert(expenseIndex, expense);
+              });
+            },
+          )),
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+
     Widget mainContent = const Center(
       child: Text('No expenses found. Start adding some!'),
     );
@@ -80,22 +82,34 @@ class _ExpensesState extends State<Expenses> {
     }
 
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Flutter ExpensesTracker'),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.add),
-              onPressed: _openAddExpenseOverlay,
+      appBar: AppBar(
+        title: const Text('Flutter ExpensesTracker'),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.add),
+            onPressed: _openAddExpenseOverlay,
+          ),
+        ],
+      ),
+      body: width < 600
+          ? Column(
+              children: <Widget>[
+                Chart(expenses: _registeredExpenses),
+                Expanded(
+                  child: mainContent,
+                ),
+              ],
+            )
+          : Row(
+              children: <Widget>[
+                Expanded(
+                  child: Chart(expenses: _registeredExpenses),
+                ),
+                Expanded(
+                  child: mainContent,
+                ),
+              ],
             ),
-          ],
-        ),
-        body: Column(
-          children: <Widget>[
-            Chart(expenses: _registeredExpenses),
-            Expanded(
-              child: mainContent,
-            ),
-          ],
-        ));
+    );
   }
 }
